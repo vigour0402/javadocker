@@ -1,0 +1,11 @@
+
+to build image:
+
+copy webtest-0.0.1-SNAPSHOT.war into base dir of Dockerfile
+
+run command:
+docker build -t kevbob/webtest .
+
+-t is a repository and name for the build (a tag)
+
+docker images now lists the 

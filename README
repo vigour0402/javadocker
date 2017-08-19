@@ -1,11 +1,32 @@
 
+
+
 to build image:
 
-copy webtest-0.0.1-SNAPSHOT.war into base dir of Dockerfile
+run maven build:
+mvn clean package
 
 run command:
-docker build -t kevbob/webtest .
+docker build -t kevbob/webtest --build-arg JAR_TO_COPY=target/webtest-*.jar .
 
 -t is a repository and name for the build (a tag)
 
-docker images now lists the 
+docker images now lists the  image kevbob/webtest:latest
+
+start docker image and specify zookeeper connection and spring profiles
+
+docker run -e SPRING_CLOUD_ZOOKEEPER_CONNECT_STRING=172.17.0.2:2181 -e SPRING_PROFILES_ACTIVE=dev foo
+
+
+zookeeper properties:
+application       <-- applicable to all apps (thing globals)
+application,dev   <-- applicable to all apps in dev environment
+webtest         <-- empty node
+webtest/prop1   <-- contains string value
+webtest,dev     <-- empty node
+webtest,dev/prop1     <-- contains string value, overrides app value
+webtest,dev/prop2     <-- new value, no default
+
+props can be set at app or app,environment level
+
+environment properties override 

@@ -1,3 +1,3 @@
 FROM etiennek/spring-boot:latest
 
-COPY target/webtest-*.jar /app.jar
+ENV SPRING_APPLICATION_NAME=webtest

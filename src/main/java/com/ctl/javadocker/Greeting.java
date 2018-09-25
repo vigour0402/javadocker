@@ -1,4 +1,4 @@
-package org.drule.javadocker;
+package com.ctl.javadocker;
 
 public class Greeting {
 

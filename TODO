@@ -1,0 +1,4 @@
+[] run app without onejar so weld works correctly
+[] externalize configuration (zookeeper, delta-spike)
+[] external versioned file store (db, object store, etc)
+[] ??

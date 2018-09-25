@@ -1,4 +1,5 @@
-[] run app without onejar so weld works correctly
+[x] run app with onejar so weld works correctly
 [] externalize configuration (zookeeper, delta-spike)
 [] external versioned file store (db, object store, etc)
+[x] slf4j-api througout with log4j2 backend
 [] ??

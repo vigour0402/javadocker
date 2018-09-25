@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration monitorInterval="60">
-<Properties>
-    <Property name="log-path">logs</Property>
-    <Property name="archive">${log-path}/archive</Property>
-</Properties>
 
 <Appenders>
     <Console name="Console-Appender" target="SYSTEM_OUT">
         <PatternLayout>
             <pattern>
-                [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                %d{ISO8601} %-5p %pid %t (%X) [%c{3~.}:%L]: %m%n
             </pattern>>
         </PatternLayout>
     </Console>

@@ -12,6 +12,8 @@
 		<undertow.version>2.0.12.Final</undertow.version>
 		<resteasy.version>3.6.1.Final</resteasy.version>
 		<weld.version>3.0.5.Final</weld.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <log4j2.version>2.9.1</log4j2.version>
 	</properties>
 	<build>
 		<plugins>
@@ -70,29 +72,11 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-undertow</artifactId>
 			<version>${resteasy.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.jboss.spec.javax.annotation</groupId>
-					<artifactId>
-						jboss-annotations-api_1.2_spec
-					</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-cdi</artifactId>
 			<version>${resteasy.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
@@ -109,6 +93,31 @@
 			<artifactId>weld-se-core</artifactId>
 			<version>${weld.version}</version>
 		</dependency>
+            <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
 	</dependencies>
 
 </project>

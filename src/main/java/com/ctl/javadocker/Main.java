@@ -1,19 +1,21 @@
 package com.ctl.javadocker;
 
+import javax.enterprise.inject.Vetoed;
 import javax.servlet.ServletException;
 
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 
 import io.undertow.Undertow;
-import io.undertow.server.handlers.resource.ClassPathResourceManager;
-import io.undertow.server.handlers.resource.ResourceHandler;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
-import static io.undertow.Handlers.resource;
 
+@Vetoed
 public class Main {
 	public static void main(String[] args) throws ServletException {
+//	    Weld weld = new Weld().containerId(RegistrySingletonProvider.STATIC_INSTANCE);
+//	    weld.addPackages(true, Package.getPackage("com.ctl.javadocker"));
+//	    WeldContainer wc = weld.initialize();
 
 		UndertowJaxrsServer server = new UndertowJaxrsServer();
 
@@ -33,6 +35,7 @@ public class Main {
 		Undertow.Builder builder = Undertow.builder().addHttpListener(8080, "localhost");
 
 		server.start(builder);
+		
 
 	}
 }

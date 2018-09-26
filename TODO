@@ -1,5 +1,7 @@
-[x] run app with onejar so weld works correctly
+[] run app with onejar so weld works correctly
 [] externalize configuration (zookeeper, delta-spike)
 [] external versioned file store (db, object store, etc)
+[x] CDI working properly w/ scopes, etc.
 [x] slf4j-api througout with log4j2 backend
+[x] persistance w/ JPA deltaspike model
 [] ??

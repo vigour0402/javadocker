@@ -9,7 +9,7 @@ customized docker file is dropped into target
 ---------------------------------------------
 $ cd target/
 $ docker build -t javadocker:0.9.0-SNAPSHOT .
-$ docker run -it --rm --name jd javadocker:0.9.0-SNAPSHOT
+$ docker run -it --rm --name jd -e MAX_HEAP=1g javadocker:0.9.0-SNAPSHOT
 
 customizing runtime
 -------------------

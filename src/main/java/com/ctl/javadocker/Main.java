@@ -32,7 +32,7 @@ public class Main {
 
 		server.deploy(deploymentInfo);
 
-		Undertow.Builder builder = Undertow.builder().addHttpListener(8080, "localhost");
+		Undertow.Builder builder = Undertow.builder().addHttpListener(8080, "0.0.0.0");
 
 		server.start(builder);
 		

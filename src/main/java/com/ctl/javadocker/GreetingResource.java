@@ -3,9 +3,7 @@ package com.ctl.javadocker;
 import java.util.concurrent.TimeUnit;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Provider;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,7 +20,7 @@ public class GreetingResource {
 	    .cacheFor(TimeUnit.MILLISECONDS, 10000);
 
 	@Inject
-	@ConfigProperty(name = "foo", defaultValue = "NOTHING")
+	@ConfigProperty(name = "element.command_sessions", defaultValue = "NOTHING")
 	private String																fooValue;
 
 	@GET

@@ -18,7 +18,7 @@
         <log4j2.version>2.9.1</log4j2.version>
         <camel.version>2.22.1</camel.version>
         <deltaspike.version>1.9.0</deltaspike.version>
-        <version.curator>2.12.0</version.curator>
+        <version.curator>3.3.0</version.curator>
         <application.mainclass>com.ctl.javadocker.Main</application.mainclass>
         <application.dependencies>lib</application.dependencies>
         <application.workdir>application</application.workdir>
@@ -240,6 +240,12 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>${version.curator}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>log4j</groupId>
+            		<artifactId>log4j</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

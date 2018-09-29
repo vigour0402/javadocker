@@ -12,8 +12,8 @@ import org.apache.deltaspike.core.api.config.Source;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 import org.apache.deltaspike.core.util.PropertyFileUtils;
 
-@ApplicationScoped
 @Source
+@ApplicationScoped
 public class MyPropertyFileSource implements ConfigSource {
 
 	private static final String FILENAME = "etc/myapp.properties";

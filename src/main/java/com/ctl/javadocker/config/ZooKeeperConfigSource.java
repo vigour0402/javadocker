@@ -17,8 +17,8 @@ import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Source
-@ApplicationScoped
+//@Source
+//@ApplicationScoped
 public class ZooKeeperConfigSource implements ConfigSource {
 
 	private static final Logger logger = LoggerFactory.getLogger(ZooKeeperConfigSource.class);

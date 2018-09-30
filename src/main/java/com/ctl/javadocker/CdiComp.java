@@ -22,19 +22,18 @@ import org.apache.qpid.url.URLSyntaxException;
 @ApplicationScoped
 public class CdiComp {
 	
-	@Inject
-	@ConfigProperty(name="jd.qpid.url")
-	private String amqpUrl;
-
+//	@Inject
+//	@ConfigProperty(name="jd.qpid.url")
+//	private String amqpUrl;
 	
 
 	@Produces
 	@Named("cfx")
 	public AMQPComponent cfx() throws URLSyntaxException {
-//		String url = ConfigResolver.resolve("jd.qpid.url").getValue();
+		String url = ConfigResolver.resolve("jd.qpid.url").getValue();
 		
 		PooledConnectionFactory cx = new PooledConnectionFactory();
-		cx.setConnectionURLString(amqpUrl);
+		cx.setConnectionURLString(url);
 		
 		return new AMQPComponent(cx);		
 	}

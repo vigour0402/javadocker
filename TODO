@@ -1,7 +1,8 @@
-[] run app with onejar so weld works correctly
-[] externalize configuration (zookeeper, delta-spike)
-[] external versioned file store (db, object store, etc)
+[x] externalize configuration (zookeeper, delta-spike)
+[x] deploy and run in docker
 [x] CDI working properly w/ scopes, etc.
 [x] slf4j-api througout with log4j2 backend
 [x] persistance w/ JPA deltaspike model
+[] externalize or via cdi bean, initialize persistance entity manager.
+[] external versioned file store (db, object store, etc)
 [] ??

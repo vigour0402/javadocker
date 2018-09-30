@@ -3,6 +3,7 @@ package com.ctl.javadocker;
 import javax.enterprise.inject.Vetoed;
 import javax.servlet.ServletException;
 
+import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 
@@ -13,9 +14,6 @@ import io.undertow.servlet.api.DeploymentInfo;
 @Vetoed
 public class Main {
 	public static void main(String[] args) throws ServletException {
-//	    Weld weld = new Weld().containerId(RegistrySingletonProvider.STATIC_INSTANCE);
-//	    weld.addPackages(true, Package.getPackage("com.ctl.javadocker"));
-//	    WeldContainer wc = weld.initialize();
 
 		UndertowJaxrsServer server = new UndertowJaxrsServer();
 
@@ -31,8 +29,10 @@ public class Main {
 		deploymentInfo.addListener(Servlets.listener(org.jboss.weld.environment.servlet.Listener.class));
 
 		server.deploy(deploymentInfo);
+		
+		int port = ConfigResolver.resolve("server.port").as(Integer.class).getValue();
 
-		Undertow.Builder builder = Undertow.builder().addHttpListener(8080, "0.0.0.0");
+		Undertow.Builder builder = Undertow.builder().addHttpListener(port, "0.0.0.0");
 
 		server.start(builder);
 		

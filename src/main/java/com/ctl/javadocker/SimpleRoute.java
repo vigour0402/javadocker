@@ -1,6 +1,6 @@
 package com.ctl.javadocker;
 
-import javax.enterprise.inject.Vetoed;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
@@ -13,10 +13,9 @@ import org.slf4j.LoggerFactory;
  * @author jcdwyer
  *
  */
-@Vetoed
+@ApplicationScoped
 public class SimpleRoute extends RouteBuilder {
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleRoute.class);
-	//	private static final Logger LOG = LoggerFactory.getLogger(SimpleRoute.class);
 
 	@Override
 	public void configure() {

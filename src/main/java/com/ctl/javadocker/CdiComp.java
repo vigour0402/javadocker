@@ -1,6 +1,11 @@
 package com.ctl.javadocker;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import org.apache.deltaspike.core.api.config.ConfigProperty;
+import org.apache.deltaspike.core.api.config.ConfigResolver;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.camel.component.amqp.AMQPComponent;
@@ -14,37 +19,24 @@ import org.apache.qpid.url.URLSyntaxException;
  * @author jcdwyer
  *
  */
+@ApplicationScoped
 public class CdiComp {
-//	@PropertyInject("jms.maxConnections")
-//	int maxConnections;
+	
+	@Inject
+	@ConfigProperty(name="jd.qpid.url")
+	private String amqpUrl;
+
+	
 
 	@Produces
 	@Named("cfx")
-	AMQPComponent cfx() {
-		String cfs = "amqp://guest:guest@client/dev?brokerlist='tcp://localhost:5672'";
+	public AMQPComponent cfx() throws URLSyntaxException {
+//		String url = ConfigResolver.resolve("jd.qpid.url").getValue();
 		
 		PooledConnectionFactory cx = new PooledConnectionFactory();
-		try {
-			cx.setConnectionURLString(cfs);
-		} catch (URLSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		cx.setConnectionURLString(amqpUrl);
 		
-//		String cs = "amqp://localhost:5672/dev";
-//		JmsConnectionFactory cx = new JmsConnectionFactory("guest", "guest", cs);
-		AMQPComponent component = new AMQPComponent(cx);		
-		return component;
+		return new AMQPComponent(cx);		
 	}
 	
-//	@Produces
-//	AMQPConnectionDetails amqpConnection() {
-//		
-//	  AMQPConnectionDetails d = new AMQPConnectionDetails("amqp://localhost:5672/dev","guest", "guest");
-//	return d;
-//	  
-//
-//	}
-
-//	 
 }

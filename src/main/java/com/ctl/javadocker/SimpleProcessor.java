@@ -3,6 +3,7 @@ package com.ctl.javadocker;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,7 +14,7 @@ import com.ctl.javadocker.data.User;
 import com.ctl.javadocker.data.UserRepository;
 
 
-//@RequestScoped
+@RequestScoped
 @Named("SimpleProcessor")
 public class SimpleProcessor {
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleProcessor.class);

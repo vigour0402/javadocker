@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration monitorInterval="60">
+<!DOCTYPE Configuration>
+<Configuration>
 
-<Appenders>
-    <Console name="Console-Appender" target="SYSTEM_OUT">
-        <PatternLayout>
-            <pattern>
-                %d{ISO8601} %-5p %pid %t (%X) [%c{3~.}:%L]: %m%n
-            </pattern>>
-        </PatternLayout>
-    </Console>
-</Appenders>
+	<Appenders>
+		<Console name="Console-Appender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>
+					%d{ISO8601} %-5p %pid %t (%X) [%c{8~.}:%L]: %m%n
+				</pattern>
 
-<Loggers>
-        <Root level="debug">
-            <AppenderRef ref="Console-Appender"/>
-        </Root>
-    </Loggers>
+			</PatternLayout>
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.springframework" level="info" />
+		<Logger name="org.xnio" level="info" />
+		<Logger name="org.apache" level="error" />
+		<Logger name="com.hazelcast" level="info" />
+		<Logger name="io.undertow" level="info" />
+		<Logger name="org.jboss.resteasy" level="info" />
+		<Logger name="org.jboss.weld" level="info" />
+
+		<Root level="debug">
+			<AppenderRef ref="Console-Appender" />
+		</Root>
+	</Loggers>
 </Configuration>

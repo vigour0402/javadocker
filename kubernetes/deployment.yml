@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jd-env1
+  labels:
+    app: jd
+    stage: env1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jd
+      stage: env1
+  template:
+    metadata:
+      labels:
+        app: jd
+        stage: env1
+    spec:
+      containers:
+      - name: javadocker
+        imagePullPolicy: Never
+        image: javadocker:5
+        ports:
+        - name: http
+          containerPort: 8080
+        env:
+        - name: JAVA_OPTS
+          value: "-Dcom.ctl.configsource.zookeeper.url=192.168.0.91:2181 -Dcom.ctl.configsource.zookeeper.applicationId=/config/javadocker -Dserver.port=8080"

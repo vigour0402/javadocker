@@ -1,0 +1,8 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jd-env1-ing
+spec:
+  backend:
+    serviceName: jd-env1-svc
+    servicePort: 8080

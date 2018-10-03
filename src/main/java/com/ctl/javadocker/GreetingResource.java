@@ -16,12 +16,12 @@ import org.apache.deltaspike.core.api.config.ConfigResolver;
 @ApplicationScoped
 public class GreetingResource {
 
-	private ConfigResolver.TypedResolver<String>	fooResolver	= ConfigResolver.resolve("foo").logChanges(true)
-	    .cacheFor(TimeUnit.MILLISECONDS, 10000);
+	private ConfigResolver.TypedResolver<String> fooResolver = ConfigResolver.resolve("foo").logChanges(true)
+			.cacheFor(TimeUnit.MILLISECONDS, 10000);
 
 	@Inject
-	@ConfigProperty(name = "element.command_sessions", defaultValue = "NOTHING")
-	private String																fooValue;
+	@ConfigProperty(name = "FOO_BAR_BAZ", defaultValue = "NOTH2ING")
+	private String fooValue;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

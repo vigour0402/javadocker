@@ -1,15 +1,36 @@
-kind: Service
-apiVersion: v1
+---
+kind: "Template"
+apiVersion: "v1"
 metadata:
-  labels:
-    app: jd
-    stage: env1
-  name: jd-env1-svc
-spec:
-  type: NodePort
-  selector:
-    app: jd
-    stage: env1
-  ports:
-  -  targetPort: 8080 
-     port: 8080 
+  name: "javadocker-service"
+  annotations:
+    description: "service for javadocker app"
+labels:
+  template: "javadocker-deployment-template"
+objects:
+- kind: Service
+  apiVersion: v1
+  metadata:
+     labels:
+       app: jd
+       environment: $(ENV)
+  name: jd-$(ENV)-svc
+  spec:
+     type: NodePort
+     selector:
+       app: jd
+       environment: $(ENV)
+     ports:
+     -  targetPort: $((SERVER_PORT))
+        port: $((SERVER_PORT))
+parameters:
+  - name: "ENV"
+    description: "environment"
+    required: true
+    value: "DEV1"
+    parameterType: "string"
+  - name: "SERVER_PORT"
+    description: "port number"
+    parameterType: "int"
+    value: 8080
+    required: true

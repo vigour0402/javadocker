@@ -1,29 +1,59 @@
-apiVersion: apps/v1
-kind: Deployment
+---
+kind: "Template"
+apiVersion: "v1"
 metadata:
-  name: jd-env1
-  labels:
-    app: jd
-    stage: env1
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
+  name: "javadocker-deployment"
+  annotations:
+    description: "Provides a MongoDB database service"
+labels:
+  template: "javadocker-deployment-template"
+objects:
+- kind: Deployment
+  apiVersion: apps/v1
+  metadata:
+    name: "jd-$(ENV)"
+    labels:
       app: jd
-      stage: env1
-  template:
-    metadata:
-      labels:
+      environment: "$(ENV)"
+  spec:
+    replicas: $((POD_COUNT))
+    selector:
+      matchLabels:
         app: jd
-        stage: env1
-    spec:
-      containers:
-      - name: javadocker
-        imagePullPolicy: Never
-        image: javadocker:5
-        ports:
-        - name: http
-          containerPort: 8080
-        env:
-        - name: JAVA_OPTS
-          value: "-Dcom.ctl.configsource.zookeeper.url=192.168.0.91:2181 -Dcom.ctl.configsource.zookeeper.applicationId=/config/javadocker -Dserver.port=8080"
+        environment: $(ENV)
+    template:
+      metadata:
+        labels:
+          app: jd
+          environment: $(ENV)
+      spec:
+        containers:
+        - name: javadocker
+          imagePullPolicy: Never
+          image: $(IMAGE)
+          ports:
+          - name: http
+            containerPort: $((SERVER_PORT))
+          env:
+          - name: JAVA_OPTS
+            value: "-Dcom.ctl.configsource.zookeeper.url=192.168.0.91:2181 -Dcom.ctl.configsource.zookeeper.applicationId=/config/javadocker -Dserver.port=$(SERVER_PORT)"
+parameters:
+  - name: "ENV"
+    description: "environment"
+    required: true
+    value: "DEV1"
+    parameterType: "string"
+  - name: "IMAGE"
+    description: "docker image name"
+    parameterType: "string"
+    required: true
+  - name: "POD_COUNT"
+    description: "number of replicas"
+    parameterType: "int"
+    value: 2
+    required: true
+  - name: "SERVER_PORT"
+    description: "port number"
+    parameterType: "int"
+    value: 8080
+    required: true

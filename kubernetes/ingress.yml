@@ -1,8 +1,29 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
+---
+kind: "Template"
+apiVersion: "v1"
 metadata:
-  name: jd-env1-ing
-spec:
-  backend:
-    serviceName: jd-env1-svc
-    servicePort: 8080
+  name: "javadocker-deployment"
+  annotations:
+    description: "Provides a MongoDB database service"
+labels:
+  template: "javadocker-deployment-template"
+objects:
+-  kind: Ingress
+   apiVersion: extensions/v1beta1
+   metadata:
+     name: jd-$(ENV)-ing
+   spec:
+     backend:
+       serviceName: jd-$(ENV)-svc
+       servicePort: $((SERVER_PORT))
+parameters:
+  - name: "ENV"
+    description: "environment"
+    required: true
+    value: "DEV1"
+    parameterType: "string"
+  - name: "SERVER_PORT"
+    description: "port number"
+    parameterType: "int"
+    value: 8080
+    required: true

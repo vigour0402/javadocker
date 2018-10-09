@@ -27,6 +27,6 @@ public class GreetingResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Greeting greeting() {
 		String f = fooResolver.getValue();
-		return new Greeting(1, "hello!" + " > " + fooValue + " , " + f);
+		return new Greeting(1, "xhello!" + " > " + fooValue + " , " + f);
 	}
 }

@@ -1,0 +1,13 @@
+ktmpl is used a a templating utility
+
+how to deploy 'deployment'
+--------------------------
+ktmpl -f env1_params.yml -p IMAGE jd:9 deployment.yml  | kubectl apply -f -
+
+how to deploy 'service'
+-----------------------
+ktmpl -f env1_params.yml service.yml  | kubectl apply -f -
+
+how to deploy 'ingress'
+-----------------------
+ktmpl -f env1_params.yml service.yml  | kubectl apply -f -

@@ -14,7 +14,7 @@ objects:
      labels:
        app: jd
        environment: $(ENV)
-  name: jd-$(ENV)-svc
+     name: jd-$(ENV)
   spec:
      type: NodePort
      selector:
@@ -27,7 +27,7 @@ parameters:
   - name: "ENV"
     description: "environment"
     required: true
-    value: "DEV1"
+    value: "dev1"
     parameterType: "string"
   - name: "SERVER_PORT"
     description: "port number"

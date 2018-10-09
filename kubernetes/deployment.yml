@@ -21,6 +21,12 @@ objects:
       matchLabels:
         app: jd
         environment: $(ENV)
+    strategy:
+       type: RollingUpdate
+       rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
+    minReadySeconds: 20
     template:
       metadata:
         labels:

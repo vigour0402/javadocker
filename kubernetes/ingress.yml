@@ -14,13 +14,13 @@ objects:
      name: jd-$(ENV)-ing
    spec:
      backend:
-       serviceName: jd-$(ENV)-svc
+       serviceName: jd-$(ENV)
        servicePort: $((SERVER_PORT))
 parameters:
   - name: "ENV"
     description: "environment"
     required: true
-    value: "DEV1"
+    value: "dev1"
     parameterType: "string"
   - name: "SERVER_PORT"
     description: "port number"

@@ -42,12 +42,16 @@ objects:
             containerPort: $((SERVER_PORT))
           env:
           - name: JAVA_OPTS
-            value: "-Dcom.ctl.configsource.zookeeper.url=192.168.0.91:2181 -Dcom.ctl.configsource.zookeeper.applicationId=/config/javadocker -Dserver.port=$(SERVER_PORT)"
+            value: "-Dserver.port=$(SERVER_PORT)"
+          - name: ZK_LIST
+            value: $(ZK_LIST)
+          - name: ZK_CONFIG_PATH
+            value: $(ZK_CONFIG_PATH)
 parameters:
   - name: "ENV"
     description: "environment"
     required: true
-    value: "DEV1"
+    value: "dev1"
     parameterType: "string"
   - name: "IMAGE"
     description: "docker image name"
@@ -62,4 +66,12 @@ parameters:
     description: "port number"
     parameterType: "int"
     value: 8080
+    required: true
+  - name: "ZK_LIST"
+    description: "list of zookeeper cluster hosts in connect string format (comma delimited host:ports)"
+    parameterType: "string"
+    required: true
+  - name: "ZK_CONFIG_PATH"
+    description: "zookeeper node path for config properties"
+    parameterType: "string"
     required: true

@@ -16,7 +16,6 @@ objects:
        environment: $(ENV)
      name: jd-$(ENV)
   spec:
-     type: NodePort
      selector:
        app: jd
        environment: $(ENV)

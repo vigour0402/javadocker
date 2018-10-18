@@ -47,6 +47,18 @@ objects:
             value: $(ZK_LIST)
           - name: ZK_CONFIG_PATH
             value: $(ZK_CONFIG_PATH)
+          livenessProbe:
+            httpGet:
+              path: /api/greeting
+              port: $((SERVER_PORT))
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/greeting
+              port: $((SERVER_PORT))
+            initialDelaySeconds: 5
+            periodSeconds: 3
 parameters:
   - name: "ENV"
     description: "environment"

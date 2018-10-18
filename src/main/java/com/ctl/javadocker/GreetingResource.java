@@ -1,5 +1,7 @@
 package com.ctl.javadocker;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -25,8 +27,9 @@ public class GreetingResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Greeting greeting() {
+	public Greeting greeting() throws UnknownHostException {
+		String host = InetAddress.getLocalHost().getHostName();
 		String f = fooResolver.getValue();
-		return new Greeting(1, "xhello!" + " > " + fooValue + " , " + f);
+		return new Greeting(1, "xhello!" + " > " + fooValue + " , " + f, host);
 	}
 }

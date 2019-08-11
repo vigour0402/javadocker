@@ -8,8 +8,11 @@ $ mvn clean package
 customized docker file is dropped into target
 ---------------------------------------------
 $ cd target/
-$ docker build -t javadocker:0.9.0-SNAPSHOT .
-$ docker run -it --rm --name jd -e MAX_HEAP=1g javadocker:0.9.0-SNAPSHOT
+$ docker build -t jd:12 .
+$ docker run -it --name jd -p 8082:8080 
+-e JAVA_OPTS="-Dserver.port=8080"
+ -e ZK_LIST='th-ptd-lab1.i3.level3.com:2181,web2-ptd-3945.i3.level3.com:2181,faster-ptd-tst1.i3.level3.com'\
+ -e ZK_CONFIG_PATH='/config/javadocker' jd:4
 
 customizing runtime
 -------------------

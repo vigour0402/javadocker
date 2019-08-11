@@ -1,5 +1,5 @@
 ---
 ENV: "env1"
 SERVER_PORT: "8080"
-ZK_LIST: "192.168.0.91:2181"
+ZK_LIST: "th-ptd-lab1.i3.level3.com:2181,web2-ptd-3945.i3.level3.com:2181,faster-ptd-tst1.i3.level3.com"
 ZK_CONFIG_PATH: "/config/javadocker"

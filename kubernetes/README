@@ -11,3 +11,11 @@ ktmpl -f env1_params.yml service.yml  | kubectl apply -f -
 how to deploy 'ingress'
 -----------------------
 ktmpl -f env1_params.yml service.yml  | kubectl apply -f -
+
+scale deployment
+----------------
+kubectl scale deployment/jd-env1 --replicas=5
+
+deploy new image
+----------------
+kubectl set image deployment.extensions/jd-env1 javadocker=jd:13
